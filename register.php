@@ -1,0 +1,46 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Aaron
+ * Date: 16-4-2019
+ * Time: 10:17
+ */
+
+require 'config.php';
+require 'header.php';
+
+?>
+            
+            <div class="container">
+                <div class="register">
+
+                <h3>Registreren</h3>
+
+                <form action="loginController.php" method="post">
+                    <input type="hidden" name="type" value="register">
+                        <div class="form-group">
+                            <label for="username"><b>Username</b></label>
+                            <input type="username" placeholder="Enter your Username" name="username" required>
+                        </div>
+                   
+                        <div class="form-group">
+                            <label for="password"><b>Password</b></label>
+                            <input type="password" placeholder="Enter your password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmpassword"><b>Confirm-password</b></label>
+                            <input type="password" placeholder="Confirm your password" name="confirmpassword" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Registreren">
+                        </div>
+                    
+                </form> <!-- end of form action -->
+
+                </div><!-- end of login -->
+            </div><!-- end of container -->
+
+<?php
+require 'footer.php';
+?>
