@@ -22,37 +22,51 @@ $sql = "SELECT * FROM posts";
 $postquery = $db->query($sql);
 $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 
+$sql = "SELECT * FROM users";
+$userquery = $db->query($sql);
+$users = $userquery->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <main>
 	<div class="container">
-    <div clas="subject-section">
-           <div class="subject-grid">
+    <div class="section">
+           <div class="table-responsive">
                <?php
                
                
                foreach($categories as $category) 
                 {
-                    echo "<div class='category'>";
+                    echo "<div class='card'>";
                     echo "<h3>{$category['categoryName']} </h3>";
                     echo "<p><em>{$category['categoryDesc']}</em></p>";
                     foreach($topics as $topic) 
                 {
                     if($topic['topicCategory'] == $category['categoryID'])
                     {
-                    echo "<div class='topic'>";
+                    echo "<div class= 'table-responsive>";
                     echo "<h4>{$topic['topicSubject']} </h4>";
                     foreach($posts as $post)
                     {
                         if($post['postTopic'] == $topic['topicId'])
                         {
-                           
+                                
                                 $postPreview = $post['postContent'];
                                 if(strlen($postPreview)>64)
                                 {
                                     $postPreview = substr($postPreview,0,64);
                                     $postPreview = $postPreview.= "...";
                                 }
-                                echo "<p>{$postPreview} </p>";
+                                echo "<div class='card'>";
+                                echo "<p>{$postPreview}</p>";
+                                foreach($users as $user)
+                                {
+                                    if($post['postBy'] == $user['id'])
+                                    {
+                                        echo "<p><em> By : {$user['username']} </em></p>";
+                                    }
+                                }
+                                
+                                echo "</div>";
                         }
                     }
                     echo "</div>";
