@@ -34,7 +34,7 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
                 {
                     echo "<div class='category'>";
                     echo "<h3>{$category['categoryName']} </h3>";
-                    echo "<p>{$category['categoryDesc']} </p";
+                    echo "<p><em>{$category['categoryDesc']}</em></p>";
                     foreach($topics as $topic) 
                 {
                     if($topic['topicCategory'] == $category['categoryID'])
