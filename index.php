@@ -9,62 +9,44 @@
 require 'config.php';
 require 'header.php';
 
+$sql = "SELECT * FROM posts";
+$query = $db->query($sql);
+$posts = $query->fetch(PDO::FETCH_ASSOC);
 
 $sql = "SELECT * FROM categories";
 $query = $db->query($sql);
-$categories = $query->fetchAll(PDO::FETCH_ASSOC);
+$categories = $query->fetch(PDO::FETCH_ASSOC);
 
 $sql = "SELECT * FROM topics";
-$topquery = $db->query($sql);
-$topics = $topquery->fetchAll(PDO::FETCH_ASSOC);
+$query = $db->query($sql);
+$categories = $query->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM posts";
-$postquery = $db->query($sql);
-$posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM users";
+$query = $db->query($sql);
+$categories = $query->fetch(PDO::FETCH_ASSOC);
 
 ?>
+
 <main>
+    <h2>Dit is de index. :)</h2>
 	<div class="container">
     <div clas="subject-section">
            <div class="subject-grid">
-               <?php
-               
-               
-               foreach($categories as $category) 
-                {
-                    echo "<div class='category'>";
-                    echo "<h3>{$category['categoryName']} </h3>";
-                    echo "<p><em>{$category['categoryDesc']}</em></p>";
-                    foreach($topics as $topic) 
-                {
-                    if($topic['topicCategory'] == $category['categoryID'])
-                    {
-                    echo "<div class='topic'>";
-                    echo "<h4>{$topic['topicSubject']} </h4>";
-                    foreach($posts as $post)
-                    {
-                        if($post['postTopic'] == $topic['topicId'])
-                        {
-                           
-                                $postPreview = $post['postContent'];
-                                if(strlen($postPreview)>64)
-                                {
-                                    $postPreview = substr($postPreview,0,64);
-                                    $postPreview = $postPreview.= "...";
-                                }
-                                echo "<p>{$postPreview} </p>";
-                        }
-                    }
-                    echo "</div>";
-                    }
-                } ;
-                    echo "</div>";
-                } ;
-                
-            
-               ?>
-           
-               
+               <!--Main Subject Class--->
+               <div class="main-subject">
+
+                   <div class="main-subject-title"><b>Main Subject</b></div>
+                   <div class="sub-subject-grid">
+                       <!--Sub Subject Class--->
+                       <div class="sub-subject">
+                           <div class="sub-subject-title"><b>Sub Subject</b></div>
+                           <div class="sub-subject-content">Sub Subject Content</div>
+                       </div>
+                       <!--End Sub Subject Class-->
+                   </div>
+               </div>
+               <!--End Main Subject Class-->
+
            </div>
     </div>
     </div>
