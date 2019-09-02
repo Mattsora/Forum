@@ -28,7 +28,8 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <main>
-	<div class="container">
+    <div class="masthead">
+<div class="container">
     <div class="section">
            <div class="table-responsive">
                <?php
@@ -36,14 +37,14 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                
                foreach($categories as $category) 
                 {
-                    echo "<div class='card'>";
-                    echo "<h3>{$category['categoryName']} </h3>";
+                    echo "<div class='section'>";
+                    echo "<h2>{$category['categoryName']} </h2>";
                     echo "<p><em>{$category['categoryDesc']}</em></p>";
                     foreach($topics as $topic) 
                 {
                     if($topic['topicCategory'] == $category['categoryID'])
                     {
-                    echo "<div class= 'table-responsive>";
+                    echo "<div class= 'cta'>";
                     echo "<h4>{$topic['topicSubject']} </h4>";
                     foreach($posts as $post)
                     {
@@ -56,7 +57,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                                     $postPreview = substr($postPreview,0,64);
                                     $postPreview = $postPreview.= "...";
                                 }
-                                echo "<div class='card'>";
+                                echo "<div class='cta-content'>";
                                 echo "<p>{$postPreview}</p>";
                                 foreach($users as $user)
                                 {
@@ -82,6 +83,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
            </div>
     </div>
     </div>
+            </div>
 <?php
 require 'footer.php';
 ?>

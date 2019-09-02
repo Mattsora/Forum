@@ -41,15 +41,18 @@ h3,
 h4,
 h5,
 h6 {
+  
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
+  color : white;
 }
 
 p {
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 20px;
+  color : white;
 }
 
 section {
@@ -152,7 +155,7 @@ section h2 {
   }
 }
 
-header.masthead {
+.masthead {
   position: relative;
   width: 100%;
   padding-top: 150px;

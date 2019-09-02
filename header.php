@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ChampionsClub</title>
-    <link rel="stylesheet" href="css/main.css">
 
-    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Champions Club Forum</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/new-age.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/new-age.css">
+
 </head>
 
-<body>
-	<header>
-        <div class="container">
-		  <div class="header">
-            <div class="title">
-                <h1><a href="index.php">ChampionsClub</a></h1>
-            </div>
+<body id="page-top">
 
-            <nav>
-             
-            </nav>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <!-- Title for top-left home-button -->
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">The Champions Club</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <!-- Title for First button -->
+          <a class="nav-link js-scroll-trigger" href="#Register">Register</a>
+        </li>
+        <li class="nav-item">
+          <!-- Title for Second button -->
+          <a class="nav-link js-scroll-trigger" href="#Login">Login</a>
+        </li>
+        <li class="nav-item">
+          <!-- Title for Third Button -->
+          <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navigation End -->
 
-            <div class="register-or-login">
-                <div class= "login-button"><a href="login.php">Inloggen</a></div>
-                <div class= "register-button"><a href="register.php">Registreren</a></div>
-            </div>         
-            <div class="search-bar-box">
-                    <div class="search-bar">
-                        <h2>Zoeken</h2>
-                        <input type="text" name="search-query" value="">
-                    </div>
-                    <div class="search-bar-icon">
-                            <img src="images/search-bar.png" alt="">
-                    </div>
-                </div>
-            </div><!-- end of header -->         
-        </div><!-- end of container -->
-	</header>
 	<main>
