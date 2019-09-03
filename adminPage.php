@@ -33,7 +33,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
     <div class="section">
            <div class="table-responsive">
                <?php
-               //echo '<form action ="updateUser.php" method="POST"> ';
+               
                
                foreach($users as $user) 
                 {
@@ -41,15 +41,16 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                     echo "<h2>{$user['username']} </h2>";
                     if($user['userlevel'] == 666)
                     {
+                        $tempID = $user['id'];
                         echo "<h4>Level : Admin </h4>";
-                        echo ' <a href=updateUser.php?id=$user["id"]">Visit W3Schools</a> ';
+                        echo '<a href =revokeUser.php?id='.$tempID.'>Revoke Admin Rights</a>';
                        
                     }
                     else 
                     {
                         $tempID = $user['id'];
                         echo "<h4>Level : User </h4>";
-                        echo '<a href =updateUser.php?id='.$tempID.'>ADMIN</a>';
+                        echo '<a href =updateUser.php?id='.$tempID.'>Give Admin Rights</a>';
                     
                        
                     }
