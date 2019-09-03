@@ -12,6 +12,6 @@ $db = new PDO(
 );
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-//session_start();
-
-?>
+if (session_status() == PHP_SESSION_NONE){
+	session_start();
+}

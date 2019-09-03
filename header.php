@@ -1,3 +1,8 @@
+<?php
+require 'config.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,28 +39,47 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <!-- Title for top-left home-button -->
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">The Champions Club</a>
+    <a class="navbar-brand js-scroll-trigger" href="index.php">The Champions Club</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
+
         <li class="nav-item">
-          <!-- Title for First button -->
-          <a class="nav-link js-scroll-trigger" href="register.php">Register</a>
-        </li>
-        <li class="nav-item">
-          <!-- Title for Second button -->
-          <a class="nav-link js-scroll-trigger" href="#Login">Login</a>
-        </li>
-        <li class="nav-item">
-          <!-- Title for Third Button -->
-          <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
-        </li>
-        <li class="nav-item">
-          <!-- Title for Fourth Button -->
-          <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
+             <!-- Title for Second button -->
+<?php
+if(isset($_SESSION['id'])){
+    echo
+    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>
+                <li class="nav-item">
+                <!-- Title for Third Button -->
+                <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
+                </li>
+                
+                <li class="nav-item">
+                <!-- Title for Fourth Button -->
+                <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
+                </li>';
+}else {
+    echo
+    '<div class="register-or-login">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Login</a></li>
+                
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="register.php">Register</a></li>
+                <li class="nav-item">
+                <!-- Title for Third Button -->
+                <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
+                </li>
+                
+                <li class="nav-item">
+                <!-- Title for Fourth Button -->
+                <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
+                </li>
+     </div>';
+}
+    ?>
         </li>
       </ul>
     </div>

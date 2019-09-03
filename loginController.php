@@ -1,6 +1,5 @@
 <?php
 require 'config.php';
-session_start();
 if ( $_POST['type'] === 'login' ) {
     $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
     $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
