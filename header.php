@@ -43,7 +43,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <!-- Title for First button -->
-          <a class="nav-link js-scroll-trigger" href="#Register">Register</a>
+          <a class="nav-link js-scroll-trigger" href="register.php">Register</a>
         </li>
         <li class="nav-item">
           <!-- Title for Second button -->
@@ -52,6 +52,10 @@
         <li class="nav-item">
           <!-- Title for Third Button -->
           <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <!-- Title for Fourth Button -->
+          <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
         </li>
       </ul>
     </div>
