@@ -9,47 +9,81 @@
 require 'config.php';
 require 'header.php';
 
-$sql = "SELECT * FROM posts";
-$query = $db->query($sql);
-$posts = $query->fetch(PDO::FETCH_ASSOC);
 
 $sql = "SELECT * FROM categories";
 $query = $db->query($sql);
-$categories = $query->fetch(PDO::FETCH_ASSOC);
+$categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $sql = "SELECT * FROM topics";
-$query = $db->query($sql);
-$categories = $query->fetch(PDO::FETCH_ASSOC);
+$topquery = $db->query($sql);
+$topics = $topquery->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "SELECT * FROM posts";
+$postquery = $db->query($sql);
+$posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 
 $sql = "SELECT * FROM users";
-$query = $db->query($sql);
-$categories = $query->fetch(PDO::FETCH_ASSOC);
+$userquery = $db->query($sql);
+$users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
 <main>
-    <h2>Dit is de index. :)</h2>
-	<div class="container">
-    <div clas="subject-section">
-           <div class="subject-grid">
-               <!--Main Subject Class--->
-               <div class="main-subject">
-
-                   <div class="main-subject-title"><b>Main Subject</b></div>
-                   <div class="sub-subject-grid">
-                       <!--Sub Subject Class--->
-                       <div class="sub-subject">
-                           <div class="sub-subject-title"><b>Sub Subject</b></div>
-                           <div class="sub-subject-content">Sub Subject Content</div>
-                       </div>
-                       <!--End Sub Subject Class-->
-                   </div>
-               </div>
-               <!--End Main Subject Class-->
-
+    <div class="masthead">
+<div class="container">
+    <div class="section">
+           <div class="table-responsive">
+               <?php
+               
+               
+               foreach($categories as $category) 
+                {
+                    echo "<div class='section'>";
+                    echo "<h2>{$category['categoryName']} </h2>";
+                    echo "<p><em>{$category['categoryDesc']}</em></p>";
+                    foreach($topics as $topic) 
+                {
+                    if($topic['topicCategory'] == $category['categoryID'])
+                    {
+                    echo "<div class= 'cta'>";
+                    echo "<h4>{$topic['topicSubject']} </h4>";
+                    foreach($posts as $post)
+                    {
+                        if($post['postTopic'] == $topic['topicId'])
+                        {
+                                
+                                $postPreview = $post['postContent'];
+                                if(strlen($postPreview)>64)
+                                {
+                                    $postPreview = substr($postPreview,0,64);
+                                    $postPreview = $postPreview.= "...";
+                                }
+                                echo "<div class='cta-content'>";
+                                echo "<p>{$postPreview}</p>";
+                                foreach($users as $user)
+                                {
+                                    if($post['postBy'] == $user['id'])
+                                    {
+                                        echo "<p><em> By : {$user['username']} </em></p>";
+                                    }
+                                }
+                                
+                                echo "</div>";
+                        }
+                    }
+                    echo "</div>";
+                    }
+                } ;
+                    echo "</div>";
+                } ;
+                
+            
+               ?>
+           
+               
            </div>
     </div>
     </div>
+            </div>
 <?php
 require 'footer.php';
 ?>
