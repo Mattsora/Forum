@@ -53,10 +53,7 @@ require 'config.php';
 if(isset($_SESSION['id'])){
     echo
     '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>
-                <li class="nav-item">
-                <!-- Title for Third Button -->
-                <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
-                </li>
+               
                 
                 <li class="nav-item">
                 <!-- Title for Fourth Button -->
@@ -68,10 +65,7 @@ if(isset($_SESSION['id'])){
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Login</a></li>
                 
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="register.php">Register</a></li>
-                <li class="nav-item">
-                <!-- Title for Third Button -->
-                <a class="nav-link js-scroll-trigger" href="#Contact">Contact</a>
-                </li>
+                
                 
                 <li class="nav-item">
                 <!-- Title for Fourth Button -->

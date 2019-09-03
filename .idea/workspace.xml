@@ -18,6 +18,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -48,11 +49,25 @@
       <workItem from="1567247169470" duration="2859000" />
       <workItem from="1567250129193" duration="210000" />
       <workItem from="1567407319423" duration="261000" />
-      <workItem from="1567407591039" duration="4742000" />
+      <workItem from="1567407591039" duration="10259000" />
+      <workItem from="1567420245115" duration="749000" />
+      <workItem from="1567509189840" duration="7986000" />
+      <workItem from="1567517704566" duration="1894000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/fifaController.php</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
