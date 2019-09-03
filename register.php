@@ -10,19 +10,19 @@ require 'config.php';
 require 'header.php';
 
 ?>
-            
+<div class="masthead">
             <div class="container">
                 <div class="register">
 
                 <h3>Registreren</h3>
 
-                <form action="loginController.php" method="post">
+                <form action="registerController.php" method="post">
                     <input type="hidden" name="type" value="register">
                         <div class="form-group">
                             <label for="username"><b>Username</b></label>
                             <input type="username" placeholder="Enter your Username" name="username" required>
                         </div>
-                   
+
                         <div class="form-group">
                             <label for="password"><b>Password</b></label>
                             <input type="password" placeholder="Enter your password" name="password" required>
@@ -35,12 +35,12 @@ require 'header.php';
                         <div class="form-group">
                             <input type="submit" value="Registreren">
                         </div>
-                    
+
                 </form> <!-- end of form action -->
 
                 </div><!-- end of login -->
             </div><!-- end of container -->
-
+</div>
 <?php
 require 'footer.php';
 ?>
