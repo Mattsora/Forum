@@ -50,9 +50,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                     {
                         $tempID = $user['id'];
                         echo "<h4>Level : User </h4>";
-                        echo '<a href =updateUser.php?id='.$tempID.'>Give Admin Rights</a>';
-                    
-                       
+                        echo '<a href =updateUser.php?id='.$tempID.'>Give Admin Rights</a>'; 
                     }
                     
                    
