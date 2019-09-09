@@ -50,7 +50,7 @@ $topics = $query->fetchAll(PDO::FETCH_ASSOC);
         <label for="postContent"><b>Post Content</b></label>
         <input type="text" placeholder="Enter your post description" name="postContent" required>
       </div>
-      <input type="submit" value="createPost">
+      <input type="submit" value="Create post">
     </form>
   </div>
 </div>

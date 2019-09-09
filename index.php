@@ -27,63 +27,39 @@ $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<main>
-    <div class="masthead">
-<div class="container">
-    <div class="section">
-           <div class="table-responsive">
-               <?php
-               
-               
-               foreach($categories as $category) 
-                {
-                    echo "<div class='section'>";
-                    echo "<h2>{$category['categoryName']} </h2>";
-                    echo "<p><em>{$category['categoryDesc']}</em></p>";
-                    foreach($topics as $topic) 
-                {
-                    if($topic['topicCategory'] == $category['categoryID'])
-                    {
-                    echo "<div class= 'cta'>";
-                    echo "<h4>{$topic['topicSubject']} </h4>";
-                    foreach($posts as $post)
-                    {
-                        if($post['postTopic'] == $topic['topicId'])
-                        {
-                                
-                                $postPreview = $post['postContent'];
-                                if(strlen($postPreview)>64)
-                                {
-                                    $postPreview = substr($postPreview,0,64);
-                                    $postPreview = $postPreview.= "...";
-                                }
-                                echo "<div class='cta-content'>";
-                                echo "<p>{$postPreview}</p>";
-                                foreach($users as $user)
-                                {
-                                    if($post['postBy'] == $user['id'])
-                                    {
-                                        echo "<p><em> By : {$user['username']} </em></p>";
-                                    }
-                                }
-                                
-                                echo "</div>";
-                        }
-                    }
-                    echo "</div>";
-                    }
-                } ;
-                    echo "</div>";
-                } ;
-                
-            
-               ?>
-           
-               
-           </div>
+  <main>
+  <div class="masthead">
+    <div class="container">
+      <div class="section">
+        <div class="table-responsive">
+          <?php
+
+
+          foreach($categories as $category)
+          {
+            echo "<div class='section'>";
+            echo "<h2>{$category['categoryName']} </h2>";
+            echo "<p><em>{$category['categoryDesc']}</em></p>";
+            foreach($topics as $topic)
+            {
+              if($topic['topicCategory'] == $category['categoryID'])
+              {
+                echo "<div class= 'cta'>";
+                echo "<h4><a href='topics.php?topicId={$topic['topicId']}&categoryID={$category['categoryID']}'>{$topic['topicSubject']}</a></h4>";
+
+              }
+            } ;
+            echo "</div>";
+          } ;
+
+
+          ?>
+
+
+        </div>
+      </div>
     </div>
-    </div>
-            </div>
+  </div>
 <?php
 require 'footer.php';
 ?>
