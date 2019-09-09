@@ -29,6 +29,9 @@ $sql = "SELECT * FROM users";
 $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
+$sql = "SELECT * FROM posts";
+$postquery = $db->query($sql);
+$posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main>
@@ -37,13 +40,34 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
       <div class="section">
         <div class="table-responsive">
           <?php
-
+         
+            
             echo "<div class='topicTitleSection'>";
               echo "<h2>{$categoryID['categoryName']}</h2>";
               echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
             echo "</div>"; /* end of topictitlesection */
             echo"<div class='postTitleSection'>";
             echo "<h4>{$postID['postTitle']}";
+            //CHECKS IF THE USER HAS THE RIGHT TO DELETE HIS/HER OWN POST
+            if(isset($_SESSION['id']))
+            {
+              $userID = $_SESSION['id'];
+              
+              foreach ($posts as $post)
+              {
+                if($post['postID'] == $postID['postID'])
+                {
+                    $testerVar = $post['postBy'];
+                }
+              }
+             if($userID == $testerVar)
+             {
+              echo "<a href = 'postDelete.php?postId={$post['postID']}'><h4> Remove post?</h4></a>";
+             }
+            
+            }
+            //END OF THAT SECTION.
+            
             echo "</div>"; /* end of postTitleSection */
             echo "<div class='postContentSection'>";
 
