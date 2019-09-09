@@ -45,7 +45,7 @@ require 'config.php';
       <i class="fas fa-bars"></i>
     </button>
     <form action = "searchContent.php">
-      <input type="text" name = "searchBar" placeholder="Search Posts, Topics, etc...">
+      <input type="text" name = "searchBar" placeholder="Search for a post">
       <button type = "submit">Search</button>
     </form>
     <div class="collapse navbar-collapse" id="navbarResponsive">
