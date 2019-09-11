@@ -1,0 +1,203 @@
+/*! HTML5 Boilerplate v6.1.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.custom-container {
+    padding: 5%;
+    background:rgba(255,255,255,0.2);
+}
+
+.reactionSection{
+    border: 1px solid darkgray;
+    padding: 2%;
+}
+
+h4 a{
+    text-decoration: underline #fdcc52;
+}
+
+
+
+/* ==========================================================================
+   General content
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+
+}
+
+* {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+    Header
+    ========================================================================= */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1016px;
+}
+
+header {
+    background-color: #FFFFFF;
+    color: white;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 4px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 a{
+    color: #4EE304;
+    font-size: 50px;
+
+}
+
+h1 span {
+    color: #28B533;
+}
+
+nav a {
+    color: #28B533;
+    margin: 5px;
+}
+
+nav a:hover {
+    color: black;
+}
+
+
+.register-or-login a {
+    color: #28B533;
+    margin: 8px;
+}
+
+.register-or-login a:hover {
+    color: black;
+}
+
+h2 {
+    color: lightblue;
+}
+
+/* ==========================================================================
+    Media
+    ========================================================================= */
+    @media screen and (max-width: 768px) {
+        .header {
+            display: flex;
+            flex-direction: column;
+        }
+        h1 a{
+            font-size: 25px;
+        }
+    }
+
+    

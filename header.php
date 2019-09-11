@@ -28,6 +28,7 @@ require 'config.php';
   <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
 
   <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="css/main.css">
   <link href="css/new-age.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/new-age.css">
 
@@ -83,6 +84,16 @@ if(isset($_SESSION['id'])){
     </div>
   </div>
 </nav>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/new-age.min.js"></script>
 <!-- Navigation End -->
 
 	<main>
