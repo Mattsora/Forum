@@ -31,6 +31,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
   <div class="masthead">
     <div class="container">
       <div class="section">
+          <div class="custom-container">
         <div class="table-responsive">
           <?php
 
@@ -55,7 +56,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
           ?>
 
-
+        </div>
         </div>
       </div>
     </div>
