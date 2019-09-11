@@ -61,6 +61,13 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 
             echo "<div class='topicTitleSection'>";
               echo "<h2>{$categoryID['categoryName']}</h2>";
+              foreach ($posts as $post)
+              {
+                if($post['postID'] == $_GET['postID'])
+                {
+                echo '<h4> Rating :'; echo $post['postKarma']; echo '</h4>';
+                }
+              }
               echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
             echo "</div>"; /* end of topictitlesection */
             echo"<div class='postTitleSection'>";
@@ -77,19 +84,34 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
           if(isset($_SESSION['id']))
           {
               $userID = $_SESSION['id'];
-
+              $testerVar = -1;
               foreach ($posts as $post)
               {
                   if($post['postID'] == $postID['postID'])
                   {
                       $testerVar = $post['postBy'];
+                      echo '<div class= "section">';
+                      echo '<div class= "container">';
+                        echo '<div class = btn-outline>';
+                          echo "<a href = 'postUpvote.php?postId={$post['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'&{$post['postTitle']}><h4>Upvote</h4></a>";
+                        echo '</div>';
+                        echo '<div class = btn-outline>';
+                          echo "<a href = 'postDownvote.php?postId={$post['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'&{$post['postTitle']}><h4>Downvote</h4></a>";
+                        echo '</div>';
+                        echo '</div>';
+                      echo '</div>';
                   }
               }
-              if($userID == $testerVar)
+              if($testerVar)
               {
-                  echo "<a href = 'postDelete.php?postId={$post['postID']}'><h4> Remove post?</h4></a>";
+                if($userID == $testerVar)
+                {
+                  echo '<div class = btn-xl>';
+                    echo "<a href = 'postDelete.php?postId={$post['postID']}'><h4> Remove post?</h4></a>";
+                    echo '</div>';
+                }
               }
-
+            
           }
 
 
