@@ -40,20 +40,23 @@ require 'config.php';
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <!-- Title for top-left home-button -->
-    <a class="navbar-brand js-scroll-trigger" href="index.php">The Champions Club</a>
+    <a class="navbar-brand js-scroll-trigger" name="logo" href="index.php">The Champions Club</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
     <form action = "searchContent.php">
       <input type="text" name = "searchBar" placeholder="Search for a post">
-      <button type = "submit">Search</button>
+      <button type = "submit" name="searchbarButton">Search</button>
     </form>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
              <!-- Title for Second button -->
+            <div id="register-succes">
+                Register succesful
+            </div>
 <?php
 if(isset($_SESSION['id'])){
     echo
@@ -74,7 +77,7 @@ if(isset($_SESSION['id'])){
                 
                 <li class="nav-item">
                 <!-- Title for Fourth Button -->
-                <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
+ 
                 </li>
      </div>';
 }

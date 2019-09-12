@@ -31,9 +31,11 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 <main>
   <div class="masthead">
     <div class="container">
+    <div class="custom-container">
       <div class="section">
-          <div class="custom-container">
+      
         <div class="table-responsive">
+        
           <?php
 
 
@@ -43,12 +45,18 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                     echo "<h2>{$categoryID['categoryName']}</h2>";
                     echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
                   echo "</div>";
+                  
+if(isset($_SESSION['id'])){
+                  echo "<div class='createPostLink'>";
+                  echo "<a href='createPost.php?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>Create Post</a> ";
+                  echo "</div>";
+}
                   echo "<div class='postTitleSection'>";
 
                     foreach ($posts as $post)
                     if ($post['postTopic'] == $topicId['topicId']) {
                       echo "<h4> <a href='posts.php?postID={$post['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>{$post['postTitle']}</a></h4>";
-                      echo "</div>";
+                      
                       echo "<div class='postContentSection'>";
 
 
@@ -86,7 +94,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
 
           ?>
-        </div>
+          </div>
         </div>
       </div>
     </div>

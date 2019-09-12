@@ -27,15 +27,16 @@ $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-  <main>
+  
   <div class="masthead">
     <div class="container">
       <div class="section">
-          <div class="custom-container">
         <div class="table-responsive">
+        <div class="custom-container">
           <?php
+        
 
-
+          
           foreach($categories as $category)
           {
             echo "<div class='section'>";
@@ -56,7 +57,7 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
           ?>
 
-        </div>
+</div>
         </div>
       </div>
     </div>

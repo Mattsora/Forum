@@ -33,29 +33,32 @@ $prepare->execute([
     ':topicId' => $_GET['topicId']
 ]);
 $topicId = $prepare->fetch(PDO::FETCH_ASSOC);
+
+
+$sql = "SELECT * FROM posts WHERE postID = :postID";
+$prepare =  $db->prepare($sql);
+$prepare->execute([
+    ':postID' => $_GET['postID']
+]);
+$postID = $prepare->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <div class="masthead">
 <div class="container">
   <div class="createPost">
-    <form action="forumController.php<?php echo"?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}"?>" method="post">
-      <input type="hidden" name="type" value="createPost">
-      <label for="postTopic"><b>Post Topic</b></label>
-      <select>
-      <?php 
+    <form action="reactionController.php<?php echo"?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}"?>" method="POST">
+      <input type="hidden" name="type" value="createReaction">
+     
       
-      foreach ($topics as $topic)
-       echo "<option value={$topic['topicId']}>{$topic['topicSubject']}</option>";
-      ?>
-      </select>
       <div class="formPostTitle">
-        <label for="postTitle"><b>Post Title</b></label>
-        <input type="text" placeholder="Enter the title of your post" name="postTitle" required>
+        <label for="reactionTitle"><b>Reaction Title</b></label>
+        <input type="text" placeholder="Enter the title of your reaction" name="reactionTitle" required>
       </div>
       <div class="formPostContent">
-        <label for="postContent"><b>Post Content</b></label>
-        <input type="text" placeholder="Enter your post description" name="postContent" required>
+        <label for="reactionContent"><b>Reaction Content</b></label>
+        <input type="text" placeholder="Enter your post description" name="reactionContent" required>
       </div>
-      <input type="submit" value="Create post">
+      <input type="submit" value="Create reaction">
     </form>
   </div>
 </div>

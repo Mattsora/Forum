@@ -56,7 +56,7 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
   <div class="masthead">
     <div class="container">
       <div class="section">
-          <div class="custom-container">
+      <div class="custom-container">
         <div class="table-responsive">
           <?php
 
@@ -96,14 +96,16 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 
             echo "<br> <br> <br>";
            echo "<div class='reactionSection'>";
-            echo "<h3>Comments:</h3>";
-
-
+           if(isset($_SESSION['id'])){
+           echo "<a href='createReaction.php?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>Write a comment</a> <br>";
+           }
                foreach ($reactions as $reaction) {
                    if ($postID['postID'] == $reaction['reactionPost']) {
+                    echo "<div class='reactionSection'>";
                        echo "{$reaction['reactionTitle']}<br>";
                        echo "{$reaction['reactionContent']}<br>";
-                       echo "<em> By : {$reaction['username']} </em>";
+                       echo "<em> By : {$reaction['username']} <br></em>";
+                       echo "</div>";
                    }
 
                }
@@ -120,7 +122,7 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
           echo "</div>"; /* end of section*/
 
           ?>
-        </div>
+</div>
       </div> <!-- end of container -->
     </div> <!-- end of masthead -->
 </main>
