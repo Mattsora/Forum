@@ -45,25 +45,29 @@ require 'config.php';
       Menu
       <i class="fas fa-bars"></i>
     </button>
-    <form action = "searchContent.php">
-      <input type="text" name = "searchBar" placeholder="Search for a post">
-      <button type = "submit" name="searchbarButton">Search</button>
-    </form>
+    <?php if(!isset($_SESSION['id'])){
+            echo "";
+            }
+          else {
+            echo"
+    <form action = 'searchContent.php'>
+      <input type='text' name = 'searchBar' placeholder='Search for a post'>
+      <button type = 'submit' name='searchbarButton'>Search</button>
+    </form>";
+    }
+          ?>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
              <!-- Title for Second button -->
-            <div id="register-succes">
-                Register succesful
-            </div>
+
 <?php
 if(isset($_SESSION['id'])){
     echo
-    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>
-               
-                
-                <li class="nav-item">
+    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>';
+
+    echo '      <li class="nav-item">
                 <!-- Title for Fourth Button -->
                 <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
                 </li>';
@@ -74,11 +78,6 @@ if(isset($_SESSION['id'])){
                 
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="register.php">Register</a></li>
                 
-                
-                <li class="nav-item">
-                <!-- Title for Fourth Button -->
- 
-                </li>
      </div>';
 }
     ?>

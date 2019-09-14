@@ -46,10 +46,11 @@ $postID = $prepare->fetch(PDO::FETCH_ASSOC);
 <div class="masthead">
 <div class="container">
   <div class="createPost">
+    <div class="custom-container">
     <form action="reactionController.php<?php echo"?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}"?>" method="POST">
       <input type="hidden" name="type" value="createReaction">
-     
-      
+
+
       <div class="formPostTitle">
         <label for="reactionTitle"><b>Reaction Title</b></label>
         <input type="text" placeholder="Enter the title of your reaction" name="reactionTitle" required>
@@ -60,6 +61,7 @@ $postID = $prepare->fetch(PDO::FETCH_ASSOC);
       </div>
       <input type="submit" value="Create reaction">
     </form>
+  </div>
   </div>
 </div>
 </div>

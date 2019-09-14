@@ -9,7 +9,6 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-
 html {
     color: #222;
     font-size: 1em;
@@ -97,6 +96,13 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+
+.categorySection {
+  border: 1px solid darkgray;
+  padding: 2%;
+  margin-top: 2%;
+}
+
 .custom-container {
     padding: 5%;
     background:rgba(255,255,255,0.2);
@@ -108,8 +114,8 @@ textarea {
     margin-top: 2%;
 }
 
-h4 a{
-    text-decoration: underline #fdcc52;
+h2 {
+    text-decoration: underline;
 }
 
 
@@ -117,9 +123,24 @@ h4 a{
 /* ==========================================================================
    General content
    ========================================================================== */
+main {
+  min-height: 90%;
+  background:url(../img/bg-pattern.png),#7b4397;background:url(../img/bg-pattern.png),
+-webkit-gradient(linear,right top,left top,from(#7b4397),to(#dc2430));background:url(../img/bg-pattern.png),linear-gradient(to left,#7b4397,#dc2430)
+}
+
+footer {
+  min-height: 10%;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 
+}
+
+h5 {
+  font-size: 14px;
+  text-decoration: underline;
 }
 
 * {
@@ -184,9 +205,7 @@ nav a:hover {
     color: black;
 }
 
-h2 {
-    color: lightblue;
-}
+
 
 /* ==========================================================================
     Media
@@ -201,4 +220,3 @@ h2 {
         }
     }
 
-    

@@ -39,14 +39,24 @@ $topicId = $prepare->fetch(PDO::FETCH_ASSOC);
   <div class="createPost">
     <form action="forumController.php<?php echo"?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}"?>" method="post">
       <input type="hidden" name="type" value="createPost">
-      <label for="postTopic"><b>Post Topic</b></label>
-      <select>
-      <?php 
-      
-      foreach ($topics as $topic)
-       echo "<option value={$topic['topicId']}>{$topic['topicSubject']}</option>";
+
+
+
+      <?php
+
+        echo "<div class='custom-container'><b> <h4> Creating post in: </h4>
+           {$topicId['topicSubject']}</b><br><br>";
+
+      /*
+      echo "<select>";
+      foreach ($topics as $topic) {
+        echo "<option value={$topic['topicId']}>{$topic['topicSubject']}</option>";
+      }
+      echo "</select>";
+      */
       ?>
-      </select>
+
+
       <div class="formPostTitle">
         <label for="postTitle"><b>Post Title</b></label>
         <input type="text" placeholder="Enter the title of your post" name="postTitle" required>
@@ -58,6 +68,7 @@ $topicId = $prepare->fetch(PDO::FETCH_ASSOC);
       <input type="submit" value="Create post">
     </form>
   </div>
+</div>
 </div>
 </div>
 

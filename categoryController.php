@@ -1,34 +1,27 @@
-<?php 
+<?php
 require 'config.php';
 if ($_POST['type'] == 'createCategory') {
+  $sql = "SELECT * FROM categories";
+  $query = $db->query($sql);
+  $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-
-  $reactionTitle = $_POST['reactionTitle'];
-  $reactionContent = $_POST['reactionContent'];
   $userID = $_SESSION['id'];
-  $postBy = $userID;
-  $reactionBy = $userID;
-  $topicBy = $userID;
-  $postTopic = $topicId;
-  $reactionPost = $postID;
-  $postTitle = $_POST['postTitle'];
   $categoryBy = $userID;
   $categoryName = $_POST['categoryName'];
   $categoryDesc = $_POST['categoryDesc'];
 
-  $sql = "INSERT INTO reactions (reactionTitle, reactionContent, reactionPost, reactionBy)
-  VALUES (:reactionTitle, :reactionContent, :reactionPost, :reactionBy)";
+
+
+  $sql = "INSERT INTO categories (categoryName, categoryDesc, categoryBy)
+  VALUES (:categoryName, :categoryDesc, :categoryBy)";
     $prepare = $db->prepare($sql); //protect against sql injection
     $prepare->execute([
-        ':reactionTitle' => $reactionTitle,
-        ':reactionContent' => $reactionContent,
-        ':reactionPost' => $reactionPost['postID'],
-        ':reactionBy'=> $reactionBy
+        ':categoryName' => $categoryName,
+        ':categoryDesc' => $categoryDesc,
+        ':categoryBy'=> $categoryBy
     ]);
 
     header('Location: index.php');
     exit;
 }
-?>
+

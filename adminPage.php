@@ -33,9 +33,9 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
     <div class="section">
            <div class="table-responsive">
                <?php
-               
-               
-               foreach($users as $user) 
+
+
+               foreach($users as $user)
                 {
                     echo "<div class='section'>";
                     echo "<h2>{$user['username']} </h2>";
@@ -44,32 +44,32 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                         $tempID = $user['id'];
                         echo "<h4>Level : Admin </h4>";
                         echo '<a href =revokeUser.php?id='.$tempID.'>Revoke Admin Rights</a>';
-                       
+
                     }
-                    else 
+                    else
                     {
                         $tempID = $user['id'];
                         echo "<h4>Level : User </h4>";
                         echo '<a href =updateUser.php?id='.$tempID.'>Give Admin Rights</a>';
-                    
-                       
+
+
                     }
-                    
-                   
+
+
                     echo "</div>";
                 };
-                
-               
-            
+
+
+
                ?>
-           
-               
+
+
            </div>
-           
+
      </div>
 
     </div>
-           
+
 </div>
 <?php
 require 'footer.php';
