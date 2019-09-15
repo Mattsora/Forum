@@ -31,62 +31,70 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 <main>
   <div class="masthead">
     <div class="container">
+    <div class="custom-container">
       <div class="section">
-          <div class="custom-container">
+
         <div class="table-responsive">
+
           <?php
 
-
-
+if(!isset($_SESSION['id'])){
+            echo "Please <a href='register.php'> Register</a>  or <a href='login.php'> Login </a>.";
+          }
+else {
                echo "<div class='section'>";
                   echo "<div class='topicTitleSection'>";
                     echo "<h2>{$categoryID['categoryName']}</h2>";
                     echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
                   echo "</div>";
-                  echo "<div class='postTitleSection'>";
-
-                    foreach ($posts as $post)
-                    if ($post['postTopic'] == $topicId['topicId']) {
-                      echo "<h4> <a href='posts.php?postID={$post['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>{$post['postTitle']}</a></h4>";
-                      echo "</div>";
-                      echo "<div class='postContentSection'>";
 
 
 
-                          $postPreview = $post['postContent'];
-                          if(strlen($postPreview)>64)
-                          {
-                            $postPreview = substr($postPreview,0,64);
-                            $postPreview = $postPreview.= "...";
-                          }
-                          echo "<div class='cta-content'>";
-                          echo "<p>{$postPreview}</p>";
-                          foreach($users as $user)
-                          {
-                            if($post['postBy'] == $user['id'])
-                            {
-                              echo "<p><em> By : {$user['username']} </em></p>";
-                            }
-                          }
+            if (isset($_SESSION['id'])) {
+              echo "<div class='createPostLink'>";
+              echo "<a href='createPost.php?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>Create Post</a> ";
+              echo "</div>";
+            }
+            echo "<div class='postTitleSection'>";
 
-                          echo "</div>";
+            foreach ($posts as $post)
+              if ($post['postTopic'] == $topicId['topicId']) {
+                echo "<div class='reactionSection'><h4> <a href='posts.php?postID={$post['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>{$post['postTitle']}</a></h4>";
+
+                echo "<div class='postContentSection'>";
 
 
-                      echo "</div>";
+                $postPreview = $post['postContent'];
+                if (strlen($postPreview) > 64) {
+                  $postPreview = substr($postPreview, 0, 64);
+                  $postPreview = $postPreview .= "...";
+                }
+                echo "<div class='cta-content'>";
+                echo "<p>{$postPreview}</p>";
+                foreach ($users as $user) {
+                  if ($post['postBy'] == $user['id']) {
+                    echo "<p><em> By : {$user['username']} </em></p>";
+                  }
+                }
 
-                      echo "</div>";
-                     /* echo "<div class='reactionSection'>";
-                      foreach ($users as $user) {
-                         if ($post['postBy'] == )
-                    }
-                      echo "</div>";*/
-
-                    }
+                echo "</div> </div>";
 
 
+                echo "</div>";
+
+                echo "</div>";
+                /* echo "<div class='reactionSection'>";
+                 foreach ($users as $user) {
+                    if ($post['postBy'] == )
+               }
+                 echo "</div>";*/
+
+              }
+
+          }
 
           ?>
-        </div>
+          </div>
         </div>
       </div>
     </div>

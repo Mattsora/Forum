@@ -11,10 +11,14 @@ require 'header.php';
 
 ?>
 <div class="masthead">
+  <div class="container">
+    <div class="section">
+      <div class="table-responsive">
+        <div class="custom-container">
             <div class="container">
                 <div class="register">
 
-                <h3>Registreren</h3>
+                <h3>Register</h3>
 
                 <form action="registerController.php" method="post">
                     <input type="hidden" name="type" value="register">
@@ -33,7 +37,7 @@ require 'header.php';
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Registreren">
+                            <input type="submit" value="Register">
                         </div>
 
                 </form> <!-- end of form action -->
@@ -41,6 +45,11 @@ require 'header.php';
                 </div><!-- end of login -->
             </div><!-- end of container -->
 </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php
 require 'footer.php';
 ?>

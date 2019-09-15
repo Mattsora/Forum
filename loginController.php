@@ -13,8 +13,8 @@ if ( $_POST['type'] === 'login' ) {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user === false){
-        header("refresh:5; url = http://localhost/Forum%20Project/login.php");
-    die(' Gebruikersnaam óf Wachtwoord verkeerd ingevoerd. U word na 5 seconden teruggestuurd');
+      header('Location: login.php');
+    die(' Wrong username or password. You will be redirected in 5 seconds.');
     }else {
         //Alleen bij gehashde passwords
         $validPassword = password_verify($passwordAttempt, $user['password']);
@@ -31,8 +31,8 @@ if ( $_POST['type'] === 'login' ) {
             exit;
 
         } else {
-            header("refresh:5; url = http://localhost/Forum%20Project/login.php");
-            die(' Gebruikersnaam óf Wachtwoord verkeerd ingevoerd. U word na 5 seconden teruggestuurd');
+          header('Location: login.php');
+            die(' Wrong username or password. You will be redirected in 5 seconds.');
         }
     }
 }

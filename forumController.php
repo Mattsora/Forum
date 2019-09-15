@@ -7,50 +7,46 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST'){
   exit;
 }
 
+$sql = "SELECT * FROM categories WHERE categoryID = :categoryID";
+$prepare =  $db->prepare($sql);
+$prepare->execute([
+  ':categoryID' => $_GET['categoryID']
+]);
+$categoryID = $prepare->fetch(PDO::FETCH_ASSOC);
+
+$sql = "SELECT * FROM topics WHERE topicId = :topicId";
+$prepare =  $db->prepare($sql);
+$prepare->execute([
+  ':topicId' => $_GET['topicId']
+]);
+$topicId = $prepare->fetch(PDO::FETCH_ASSOC);
+
+$sql = "SELECT * FROM posts";
+$postquery = $db->query($sql);
+$posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
+
 if ($_POST['type'] == 'createPost') {
 
-  $sql = "SELECT * FROM posts";
-  $query = $db->query($sql);
-  $posts = $query->fetch(PDO::FETCH_ASSOC);
-
-  $sql = "SELECT * FROM topics";
-  $query = $db->query($sql);
-  $topics = $query->fetch(PDO::FETCH_ASSOC);
-
-  $sql = "SELECT * FROM categories";
-  $query = $db->query($sql);
-  $categories = $query->fetch(PDO::FETCH_ASSOC);
-
-  $sql = "SELECT * FROM users";
-  $query = $db->query($sql);
-  $users = $query->fetch(PDO::FETCH_ASSOC);
-
-  $postContent = $_POST['postContent'];
-  //$postBy = $_SESSION['id'];
-  $topicSubject = $_POST['topicSubject'];
-  $postTopic = 1;
-  $topicCategory = 1;
-  $postBy = 1;
-  $topicBy = 1;
+  $userID = $_SESSION['id'];
   $postTitle = $_POST['postTitle'];
+  $postContent = $_POST['postContent'];
+  $postBy = $userID;
+  $postTopic = $topicId;
 
-  var_dump($postBy);
-
-
-
-  $sql = "INSERT INTO posts (postTitle, postContent, postTopic, postBy) 
+  $sql = "INSERT INTO posts (postTitle, postContent, postTopic, postBy)
 VALUES (:postTitle, :postContent, :postTopic, :postBy)";
   $prepare = $db->prepare($sql); //protect against sql injection
   $prepare->execute([
-    ':postTitle' => $postTitle,
-    ':postContent' => $postContent,
-    ':postTopic' => $postTopic,
-    'postBy' => $postBy
+      ':postTitle' => $postTitle,
+      ':postContent' => $postContent,
+      ':postTopic' => $postTopic['topicId'],
+      ':postBy'=> $postBy
   ]);
 
 
   header('Location: index.php');
   exit;
 }
+
 
 ?>

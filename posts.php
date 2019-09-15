@@ -56,9 +56,13 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
   <div class="masthead">
     <div class="container">
       <div class="section">
-          <div class="custom-container">
+      <div class="custom-container">
         <div class="table-responsive">
           <?php
+          if(!isset($_SESSION['id'])){
+            echo "Please <a href='register.php'> Register</a>  or <a href='login.php'> Login </a>.";
+          }
+          else {
 
             echo "<div class='topicTitleSection'>";
               echo "<h2>{$categoryID['categoryName']}</h2>";
@@ -71,19 +75,17 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
               }
               echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
             echo "</div>"; /* end of topictitlesection */
-            echo"<div class='postTitleSection'>";
+            echo "<div class='postTitleSection'>";
             echo "<h4>{$postID['postTitle']}";
             echo "</div>"; /* end of postTitleSection */
             echo "<div class='postContentSection'>";
             echo "<p>{$postID['postContent']}</p>";
-           foreach ($users as $user) {
-              if($postID['postBy'] == $user['id'])
-                                      {
-                                        echo "<em> By : {$user['username']} </em>";
-                                      }
-                                    }
-          if(isset($_SESSION['id']))
-          {
+            foreach ($users as $user) {
+              if ($postID['postBy'] == $user['id']) {
+                echo "<em> By : {$user['username']} </em>";
+              }
+            }
+            if (isset($_SESSION['id'])) {
               $userID = $_SESSION['id'];
               $testerVar = -1;
               foreach ($posts as $post)
@@ -117,32 +119,30 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 
 
             echo "<br> <br> <br>";
-           echo "<div class='reactionSection'>";
-            echo "<h3>Comments:</h3>";
+           // echo "<div class='reactionSection'>";
+            if (isset($_SESSION['id'])) {
+              echo "<a href='createReaction.php?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>Write a comment</a> <br>";
+            }
+            foreach ($reactions as $reaction) {
+              if ($postID['postID'] == $reaction['reactionPost']) {
+                echo "<div class='reactionSection'>";
+                echo "{$reaction['reactionTitle']}<br>";
+                echo "{$reaction['reactionContent']}<br>";
+                echo "<em> By : {$reaction['username']} <br></em>";
+              //  echo "</div>";
+              }
+
+            }
 
 
-               foreach ($reactions as $reaction) {
-                   if ($postID['postID'] == $reaction['reactionPost']) {
-                       echo "{$reaction['reactionTitle']}<br>";
-                       echo "{$reaction['reactionContent']}<br>";
-                       echo "<em> By : {$reaction['username']} </em>";
-                   }
+            echo "</div>"; /*end of reaction section*/
 
-               }
-
-            
-                                  
-                                    
-             
-            
-               echo "</div>"; /*end of reaction section*/
-
-              echo "</div>";
+            echo "</div>";
             echo "</div>"; /*end of table-responsive */
-          echo "</div>"; /* end of section*/
-
+            echo "</div>"; /* end of section*/
+          }
           ?>
-        </div>
+</div>
       </div> <!-- end of container -->
     </div> <!-- end of masthead -->
 </main>
