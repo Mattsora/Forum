@@ -65,15 +65,15 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
           else {
 
             echo "<div class='topicTitleSection'>";
-              echo "<h2>{$categoryID['categoryName']}</h2>";
-              foreach ($posts as $post)
+            echo "<h2>{$categoryID['categoryName']}</h2>";
+            foreach ($posts as $post)
+            {
+              if($post['postID'] == $_GET['postID'])
               {
-                if($post['postID'] == $_GET['postID'])
-                {
-                echo '<h4> Rating :'; echo $post['postKarma']; echo '</h4>';
-                }
+              echo '<h4> Rating : '; echo $post['postKarma']; echo '</h4>';
               }
-              echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
+            }
+            echo "<h3><em>{$topicId['topicSubject']}</em></h3>";
             echo "</div>"; /* end of topictitlesection */
             echo "<div class='postTitleSection'>";
             echo "<h4>{$postID['postTitle']}";
@@ -87,12 +87,11 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
             }
             if (isset($_SESSION['id'])) {
               $userID = $_SESSION['id'];
-              $testerVar = -1;
-              foreach ($posts as $post)
-              {
-                  if($post['postID'] == $postID['postID'])
-                  {
-                      $testerVar = $post['postBy'];
+
+              foreach ($posts as $post) {
+                if ($post['postID'] == $postID['postID']) {
+                  $testerVar = $post['postBy'];
+                  
                       echo '<div class= "section">';
                       echo '<div class= "container">';
                         echo '<div class = btn-outline>';
@@ -103,19 +102,13 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
                         echo '</div>';
                         echo '</div>';
                       echo '</div>';
-                  }
-              }
-              if($testerVar)
-              {
-                if($userID == $testerVar)
-                {
-                  echo '<div class = btn-xl>';
-                    echo "<a href = 'postDelete.php?postId={$post['postID']}'><h4> Remove post?</h4></a>";
-                    echo '</div>';
                 }
               }
-            
-          }
+              if ($userID == $testerVar) {
+                echo "<a href = 'postDelete.php?postId={$post['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'><h4> Remove post?</h4></a>";
+              }
+
+            }
 
 
             echo "<br> <br> <br>";
@@ -123,24 +116,36 @@ $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
             if (isset($_SESSION['id'])) {
               echo "<a href='createReaction.php?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'>Write a comment</a> <br>";
             }
+
             foreach ($reactions as $reaction) {
               if ($postID['postID'] == $reaction['reactionPost']) {
                 echo "<div class='reactionSection'>";
+                echo '<h5> Rating : '; echo $reaction['reactionKarma']; echo '</h5>';
                 echo "{$reaction['reactionTitle']}<br>";
                 echo "{$reaction['reactionContent']}<br>";
+                echo "<a href ='reactionUpvote.php?reactionID={$reaction['reactionID']}&postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'&{$post['postTitle']}>Upvote</a><br>";
+                echo "<a href ='reactionDownvote.php?reactionID={$reaction['reactionID']}&postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'&{$post['postTitle']}>Downvote</a><br>";
                 echo "<em> By : {$reaction['username']} <br></em>";
+                if ($_SESSION['userlevel'] > 500) {
+
+
+                echo " <a href='deleteComment.php?reactionID={$reaction['reactionID']}&postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'> <p>Delete comment?</p> </a>";
+                  }
+                echo "</div>"; /*end of reaction section*/
               //  echo "</div>";
               }
 
             }
 
 
-            echo "</div>"; /*end of reaction section*/
+
 
             echo "</div>";
             echo "</div>"; /*end of table-responsive */
+            echo "<a href='topics.php?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'> go back? </a>";
             echo "</div>"; /* end of section*/
           }
+
           ?>
 </div>
       </div> <!-- end of container -->

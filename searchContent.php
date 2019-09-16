@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 require 'header.php';
-//This is the script for polling search results 
+//This is the script for polling search results
 $search =  $_GET['searchBar'];
 
 $sql = "SELECT * FROM posts WHERE postTitle LIKE '{$search}%'";
@@ -16,7 +16,7 @@ $sql = "SELECT * FROM topics";
 $topquery = $db->query($sql);
 $topics = $topquery->fetchAll(PDO::FETCH_ASSOC);
 
-?><main>
+?>
 <div class="masthead">
   <div class="container">
     <div class="section">
@@ -27,9 +27,9 @@ $topics = $topquery->fetchAll(PDO::FETCH_ASSOC);
             foreach($result as $post)
             {
             echo "<div class='section'>";
-          
+
             $topicId = $post['postTopic'];
-           
+
             foreach($topics as $topic)
             {
                 if($topic['topicId'] == $post['postTopic'] )
@@ -40,11 +40,11 @@ $topics = $topquery->fetchAll(PDO::FETCH_ASSOC);
 
             echo "<h2><a href='posts.php?postID={$post['postID']}&topicId={$post['postTopic']}&categoryID={$categoryID}'>{$post['postTitle']}</a> </h2>";
             echo "<p><em>{$post['postContent']}</em></p>";
-            
+
             echo "</div>";
             } ;
         }
-        else 
+        else
         {
             echo '<h2>No results found for :'; echo $search; echo '</h2>' ;
         }

@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 require 'config.php';
 if ($_POST['type'] == 'createReaction') {
   $sql = "SELECT * FROM categories WHERE categoryID = :categoryID";
@@ -45,7 +45,7 @@ if ($_POST['type'] == 'createReaction') {
         ':reactionBy'=> $reactionBy
     ]);
 
-    header('Location: index.php');
+    header("Location: posts.php?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}");
     exit;
 }
 ?>

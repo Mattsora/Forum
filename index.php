@@ -39,8 +39,12 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
             echo "Please <a href='register.php'> Register</a> if you have no account,  or <a href='login.php'> Login </a> to use the forum. <br>It is free to make an account.";
             }
           else {
-            echo "This forum is under construction.";
-            echo "<h3><a href='createCategory.php'> Create Category? </a></h3>";
+
+
+              echo "This forum is under construction.<br>";
+          if ($_SESSION['userlevel'] > 500) {
+            echo "<a href='createCategory.php'> Create category? </a>";
+          }
 
 
 
@@ -50,17 +54,24 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
               echo "<div class='section'>";
               echo "<div class='categorySection'>";
-              echo "<h2>{$category['categoryName']}<p><a href='deleteCategory.php?categoryID={$category['categoryID']}'>Delete Category?</a></p> </h2>";
+
+                echo "<h2>{$category['categoryName']}</h2>";
+              if ($_SESSION['userlevel'] > 500) {
+echo "<a href='deleteCategory.php?categoryID={$category['categoryID']}'>Delete Category?</a>";
+              }
               echo "<p><em>{$category['categoryDesc']}</em></p>";
-              echo "<h5><a href='createTopic.php?categoryID={$category['categoryID']}'> Create Topic in: {$category['categoryName']}?</h5></a> ";
+              if ($_SESSION['userlevel'] > 500) {
+              echo "<a href='createTopic.php?categoryID={$category['categoryID']}'> Create Topic in: {$category['categoryName']}?</a> ";
+                }
               foreach ($topics as $topic) {
 
                 if ($topic['topicCategory'] == $category['categoryID']) {
                   echo "<div class= 'cta'>";
 
-                  echo "<h4><a href='topics.php?topicId={$topic['topicId']}&categoryID={$category['categoryID']}'>{$topic['topicSubject']}</a> 
-                    <p><a href='deleteTopic.php?topicId={$topic['topicId']}'>Delete Topic?</a></p></h4>";
-
+                  echo "<h4><a href='topics.php?topicId={$topic['topicId']}&categoryID={$category['categoryID']}'>{$topic['topicSubject']}</a></h4> ";
+                    if ($_SESSION['userlevel'] > 500) {
+                      echo "<a href='deleteTopic.php?topicId={$topic['topicId']}'>Delete Topic?</a>";
+                    }
                   echo "</div>";
                 }
               };

@@ -66,11 +66,12 @@ require 'config.php';
 if(isset($_SESSION['id'])){
     echo
     '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>';
-
-    echo '      <li class="nav-item">
+if ($_SESSION['userlevel'] > 500) {
+  echo '      <li class="nav-item">
                 <!-- Title for Fourth Button -->
                 <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
                 </li>';
+}
 }else {
     echo
     '<div class="register-or-login">

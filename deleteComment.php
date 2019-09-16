@@ -21,21 +21,16 @@ $prepare->execute([
 ]);
 $postID = $prepare->fetch(PDO::FETCH_ASSOC);
 
+require 'config.php';
+$victim = $_GET['reactionID'];
+$sql = "SELECT reactions.reactionID FROM reactions";
 
+if ($victim == null) {
+  header("Location: index.php");
 
-$victim =  $_GET['postId'];
-$sql = "SELECT posts.postID FROM posts";
-
-if($victim == null)
-{
-    header( "Location: index.php" );
-
-}
-else
-{
-    $sql ="  DELETE FROM posts WHERE postID = $victim";
-    $query = $db->query($sql);
-    header( "Location: topics.php?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}" );
+} else {
+  $sql = "DELETE FROM reactions WHERE reactionID = $victim";
+  $query = $db->query($sql);
+  header("Location: posts.php?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}");
 
 }
-?>

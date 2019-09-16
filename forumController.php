@@ -44,7 +44,7 @@ VALUES (:postTitle, :postContent, :postTopic, :postBy)";
   ]);
 
 
-  header('Location: index.php');
+  header("Location: topics.php?topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}");
   exit;
 }
 
