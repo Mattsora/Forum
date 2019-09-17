@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
 
-//This is the script for polling search results 
+//This is the script for polling search results
 $upID =  $_GET['reactionID'];
 $postID = $_GET['postID'];
 $topicId = $_GET['topicId'];
@@ -10,5 +10,7 @@ $sql = "UPDATE reactions SET reactionKarma = reactionKarma +1 WHERE reactionID =
 
 $postquery = $db->query($sql);
 
-header( "Location: posts.php?postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}" );
+header( "Location: posts.php?postID={$postID}&topicId={$topicId}&categoryID={$categoryID}" );
+var_dump($postID);
+die;
 ?>

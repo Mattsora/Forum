@@ -34,7 +34,7 @@ if ( $_POST['type'] === 'login' ) {
             $_SESSION['userlevel'] = $user['userlevel'];
             $_SESSION['accountstatus'] = time();
 
-            header('Location: index.php');
+            header('Location: index.php?login=success');
 
             exit;
 

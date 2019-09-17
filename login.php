@@ -9,6 +9,13 @@ require 'header.php';
       <div class="table-responsive">
         <div class="custom-container">
 <form method="post" action="loginController.php">
+<?php
+echo "<div class='lrsucces'>";
+if (@$_GET['register'] == 'success'){
+  echo '<p class="successful">Register succesful!</p>';
+}
+echo "</div>";
+?>
     <input type="hidden" name="type" value="login">
     <div class="form-group">
         <label for="username"><b>Username</b></label>

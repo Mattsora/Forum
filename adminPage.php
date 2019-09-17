@@ -41,13 +41,20 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
                     if ($user['userlevel'] == 666) {
                       $tempID = $user['id'];
                       echo "<h4>Level : Admin </h4>";
-                      echo "<a href ='revokeUser.php?id={$tempID}'>Revoke Admin Rights</a>";
+                      echo "<a href ='revokeUser.php?id={$tempID}'>Revoke Admin Rights</a><br>";
 
                     } else {
                       $tempID = $user['id'];
                       echo "<h4>Level : User </h4>";
-                      echo "<a href ='updateUser.php?id={$tempID}'>Give Admin Rights</a>";
-
+                      echo "<a href ='updateUser.php?id={$tempID}'>Give Admin Rights</a><br>";
+                      if($user['userlevel'] == -420)
+                      {
+                        echo '<a href =unbanUser.php?id='.$tempID.'>Unban User</a>';
+                      }
+                      else
+                      {
+                        echo '<a href =banUser.php?id='.$tempID.'>Ban User</a>';
+                      }
 
                     }
 

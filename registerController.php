@@ -116,7 +116,7 @@ if ($_POST['type'] === 'register') {
 
     die();
   } else {
-    header('location: login.php');
+    header('location: login.php?register=success');
   }
 
   $passwordHash = password_hash($password, PASSWORD_BCRYPT, array("cost" => 12));

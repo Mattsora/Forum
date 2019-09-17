@@ -26,6 +26,7 @@ $sql = "SELECT * FROM users";
 $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
+$banned = false;
 ?>
 
   <div class="masthead">
@@ -34,10 +35,28 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
         <div class="table-responsive">
         <div class="custom-container">
           <?php
+echo "<div class='lrsucces'>";
+if (@$_GET['login'] == 'success'){
+  echo '<p class="successful">Login succesful!</p>';
+}
+echo "</div>";
+          
           if(!isset($_SESSION['id'])){
             echo "This forum is under construction.<br>";
             echo "Please <a href='register.php'> Register</a> if you have no account,  or <a href='login.php'> Login </a> to use the forum. <br>It is free to make an account.";
             }
+          else {
+            foreach ($users as $user) {
+              if ($user['id'] == $_SESSION['id']){
+                if ($user['userlevel'] == -420){
+                  $banned = true;
+                }
+              }
+            }
+           
+          if ($banned == true){
+            echo "<h4>You have been banned.</h4>";
+          }
           else {
 
 
@@ -80,6 +99,7 @@ echo "<a href='deleteCategory.php?categoryID={$category['categoryID']}'>Delete C
             };
 
           }
+        }
           ?>
 
 </div>

@@ -26,6 +26,7 @@ $sql = "SELECT * FROM users";
 $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
+$banned = false;
 ?>
 
 <main>
@@ -41,6 +42,19 @@ $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 if(!isset($_SESSION['id'])){
             echo "Please <a href='register.php'> Register</a>  or <a href='login.php'> Login </a>.";
           }
+          
+else {
+  foreach ($users as $user) {
+    if ($user['id'] == $_SESSION['id']){
+      if ($user['userlevel'] == -420){
+        $banned = true;
+      }
+    }
+  }
+ 
+if ($banned == true){
+  echo "<h4>You have been banned.</h4>";
+}
 else {
                echo "<div class='section'>";
                   echo "<div class='topicTitleSection'>";
@@ -92,7 +106,9 @@ else {
               }
 
           }
+        
           echo "<a href='index.php'> go back? </a>";
+        }
           ?>
           </div>
         </div>

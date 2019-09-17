@@ -114,8 +114,18 @@ textarea {
     margin-top: 2%;
 }
 
+.hightlight {
+    background:rgba(255,255,255,0.2);
+}
+
 h2 {
     text-decoration: underline;
+}
+
+.lrsucces {
+    color: yellow;
+    background-color: rgba(255,255,255,0.2);
+    
 }
 
 
