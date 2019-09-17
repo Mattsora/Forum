@@ -40,7 +40,8 @@ ON posts.postID = reactions.reactionPost
 INNER JOIN users
 ON users.id = reactions.reactionBy
 
-WHERE postID = :postID";
+WHERE postID = :postID
+ORDER BY `reactions`.`reactionKarma` DESC ";
 $prepare =  $db->prepare($sql);
 $prepare->execute([
     ':postID' => $_GET['postID']
@@ -169,7 +170,7 @@ $karma = $prepare->fetchAll(PDO::FETCH_ASSOC);
             echo "<div class='reactionSection'>";
             echo "<h2>Best reaction:</h2><br>";
             
-            if ($karma[0]['reactionKarma'] == 0){
+            if (@$karma[0]['reactionKarma'] == 0){
               echo "there is no best reaction yet... rate one now!";
             }
             else  {
@@ -196,12 +197,28 @@ $karma = $prepare->fetchAll(PDO::FETCH_ASSOC);
                   echo "<h5> Rating: {$reaction['reactionKarma']} </h5>";
                   
                   
+                  
 
                   echo "{$reaction['reactionTitle']}<br>";
                   echo "{$reaction['reactionContent']}<br>";
                   echo "<a href ='reactionUpvote.php?reactionID={$reaction['reactionID']}&postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'&{$post['postTitle']}>Upvote</a><br>";
                   echo "<a href ='reactionDownvote.php?reactionID={$reaction['reactionID']}&postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'&{$post['postTitle']}>Downvote</a><br>";
+                  
                   echo "<em> By : {$reaction['username']} <br></em>";
+                  if($reaction['reactionKarma']  > 9 && $reaction['reactionKarma']  < 19 )
+                {
+                  $nametag = $nametags[0];
+                  echo "<div class= 'karma-nametag'><h3> {$nametag['nametagName']} </h3></div>";
+                }
+                else
+                {
+                  if($reaction['reactionKarma']  > 18)
+                  {
+                    $nametag = $nametags[1];
+                  echo "<div class= 'karma-nametag'><h3> {$nametag['nametagName']} </h3></div>";
+                  }
+                }
+                  
                   if ($_SESSION['userlevel'] > 500) {
                     echo " <a href='deleteComment.php?reactionID={$reaction['reactionID']}&postID={$postID['postID']}&topicId={$topicId['topicId']}&categoryID={$categoryID['categoryID']}'> <p>Delete comment?</p> </a>";
                   }

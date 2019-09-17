@@ -18,7 +18,8 @@ $prepare->execute([
 ]);
 $topicId = $prepare->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT * FROM posts";
+$sql = "SELECT * FROM posts
+ORDER BY `posts`.`postKarma` DESC ";
 $postquery = $db->query($sql);
 $posts = $postquery->fetchAll(PDO::FETCH_ASSOC);
 
