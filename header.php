@@ -32,6 +32,14 @@ require 'config.php';
   <link href="css/new-age.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/new-age.css">
 
+  <!-- logo links -->
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body id="page-top">
@@ -40,33 +48,38 @@ require 'config.php';
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <!-- Title for top-left home-button -->
-    <a class="navbar-brand js-scroll-trigger" name="logo" href="index.php">The Champions Club</a>
+    <a class="navbar-brand js-scroll-trigger" name="logo" href="index.php"><img src="img/championsclub1.png" class="logo" alt="Logo"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
-    <form action = "searchContent.php">
-      <input type="text" name = "searchBar" placeholder="Search for a post">
-      <button type = "submit" name="searchbarButton">Search</button>
-    </form>
+    <?php if(!isset($_SESSION['id'])){
+            echo "";
+            }
+          else {
+            echo"
+    <form action = 'searchContent.php'>
+      <input type='text' name = 'searchBar' placeholder='Search for a post' class='searchBar'>
+      <button type = 'submit' name='searchbarButton' class='button'>Search</button>
+    </form>";
+    }
+          ?>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item">
              <!-- Title for Second button -->
-            <div id="register-succes">
-                Register succesful
-            </div>
+
 <?php
 if(isset($_SESSION['id'])){
     echo
-    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>
-               
-                
-                <li class="nav-item">
+    '<li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout.php">Logout</a></li>';
+if ($_SESSION['userlevel'] > 500) {
+  echo '      <li class="nav-item">
                 <!-- Title for Fourth Button -->
                 <a class="nav-link js-scroll-trigger" href="adminPage.php">Admin Overview</a>
                 </li>';
+}
 }else {
     echo
     '<div class="register-or-login">
@@ -74,11 +87,6 @@ if(isset($_SESSION['id'])){
                 
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="register.php">Register</a></li>
                 
-                
-                <li class="nav-item">
-                <!-- Title for Fourth Button -->
- 
-                </li>
      </div>';
 }
     ?>

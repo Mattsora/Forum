@@ -9,9 +9,7 @@
 require 'config.php';
 require 'header.php';
 
-$sql = "SELECT * FROM posts";
-$query = $db->query($sql);
-$posts = $query->fetchAll(PDO::FETCH_ASSOC);
+
 
 $sql = "SELECT * FROM categories";
 $query = $db->query($sql);
@@ -26,21 +24,30 @@ $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
-<form action="categoryController.php>" method="POST">
+  <div class="masthead">
+    <div class="container">
+      <div class="section">
+        <div class="table-responsive">
+          <div class="custom-container">
+<form action="categoryController.php" method="POST">
       <input type="hidden" name="type" value="createCategory">
-     
-      
+
+
       <div class="formPostTitle">
         <label for="categoryName"><b>Category Title</b></label>
-        <input type="text" placeholder="Enter the title of your Category" name="categoryName" required>
+        <input type="text" placeholder="Enter the title of your Category" name="categoryName" class="form-control" required>
       </div>
       <div class="formPostContent">
         <label for="categoryDesc"><b>Category Description</b></label>
-        <input type="text" placeholder="Enter your category description" name="categoryDesc" required>
+        <input type="text" placeholder="Enter your category description" name="categoryDesc" class="form-control]" required>
       </div>
-      <input type="submit" value="Create category">
+      <input type="submit" value="Create category" class="buttons">
     </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <?php
 

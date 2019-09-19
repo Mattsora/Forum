@@ -26,50 +26,59 @@ $sql = "SELECT * FROM users";
 $userquery = $db->query($sql);
 $users = $userquery->fetchAll(PDO::FETCH_ASSOC);
 
+
 ?>
-<main>
     <div class="masthead">
 <div class="container">
     <div class="section">
            <div class="table-responsive">
                <?php
-               
-               
-               foreach($users as $user) 
-                {
+
+                if ($_SESSION['userlevel'] > 500) {
+                  foreach ($users as $user) {
                     echo "<div class='section'>";
                     echo "<h2>{$user['username']} </h2>";
-                    if($user['userlevel'] == 666)
-                    {
-                        $tempID = $user['id'];
-                        echo "<h4>Level : Admin </h4>";
-                        echo '<a href =revokeUser.php?id='.$tempID.'>Revoke Admin Rights</a>';
-                       
+                    if ($user['userlevel'] == 666) {
+                      $tempID = $user['id'];
+                      echo "<h4>Level : Admin </h4>";
+                      echo "<a href ='revokeUser.php?id={$tempID}'>Revoke Admin Rights</a><br>";
+
+                    } else {
+                      $tempID = $user['id'];
+                      echo "<h4>Level : User </h4>";
+                      echo "<a href ='updateUser.php?id={$tempID}'>Give Admin Rights</a><br>";
+                      if($user['userlevel'] == -420)
+                      {
+                        echo '<a href =unbanUser.php?id='.$tempID.'>Unban User</a>';
+                      }
+                      else
+                      {
+                        echo '<a href =banUser.php?id='.$tempID.'>Ban User</a>';
+                      }
+
                     }
-                    else 
-                    {
-                        $tempID = $user['id'];
-                        echo "<h4>Level : User </h4>";
-                        echo '<a href =updateUser.php?id='.$tempID.'>Give Admin Rights</a>';
-                    
-                       
-                    }
-                    
-                   
+
+
                     echo "</div>";
-                };
-                
-               
-            
+                  };
+
+                }
+                else {
+                  echo "you are not an admin.";
+                }
+
+
+
+
                ?>
-           
-               
+
            </div>
-           
+           </div>
+
      </div>
 
     </div>
-           
+
 </div>
 <?php
 require 'footer.php';
